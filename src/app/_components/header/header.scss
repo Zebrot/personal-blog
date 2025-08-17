@@ -1,0 +1,35 @@
+.header {
+    background-color: var(--main-color);
+    
+    .container {
+        display: flex;
+        align-items: center;
+        width: 100%;    
+        gap: 20px;
+        .header__mainMenu {
+            width: 100%;
+            display:flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            &__navigation {
+                display: flex;
+                gap: 25px;
+                li {
+                    color: white;
+                    font-size: 2rem;
+                    &:hover, &:hover>*, &.current {
+                        a {
+                            text-decoration: underline;
+                            text-decoration-color: var(--accent-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.logo {
+    font-size: xxx-large;
+}

@@ -1,0 +1,24 @@
+.blog {
+    border-bottom: 1px dotted var(--main-color);
+    padding: 10px;
+    transition: 0.4s;
+
+    h1 {
+        margin: 2px;
+    }
+    p {
+        margin: 0;
+        text-indent: 1em;
+    }
+    &:hover {
+        h1 {
+            color: var(--secondary-color);
+        }
+    }
+}
+
+.blogList {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
