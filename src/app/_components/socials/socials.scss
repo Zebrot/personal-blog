@@ -1,0 +1,9 @@
+.socials {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: auto;
+    a:hover {
+        scale: 110%;
+    }
+}

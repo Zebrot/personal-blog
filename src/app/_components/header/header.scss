@@ -1,35 +1,109 @@
 .header {
     background-color: var(--main-color);
-    
+    &__mainMenu {
+        width: 100%;
+        display:flex;
+        gap: 25px;
+        list-style: none;
+        align-items: center;
+        justify-content: space-between;
+        &__navigation {
+            display: flex;
+            gap: 25px;
+            li {
+                color: white;
+                font-size: 2rem;
+                &:hover, &:hover>*, &.current {
+                    a {
+                        text-decoration: underline;
+                        text-decoration-color: var(--accent-color);
+                    }
+                }
+            }
+        }
+        .hamburger {
+            display: none;
+        }
+    }    
     .container {
         display: flex;
         align-items: center;
         width: 100%;    
         gap: 20px;
-        .header__mainMenu {
-            width: 100%;
-            display:flex;
-            gap: 25px;
-            list-style: none;
-            align-items: center;
-            justify-content: space-between;
-            &__navigation {
-                display: flex;
-                gap: 25px;
-                li {
-                    color: white;
-                    font-size: 2rem;
-                    &:hover, &:hover>*, &.current {
-                        a {
-                            text-decoration: underline;
-                            text-decoration-color: var(--accent-color);
-                        }
-                    }
-                }
-            }
-        }
+
     }
 }
 .logo {
     font-size: xxx-large;
+}
+
+@media (max-width: 991px) {
+    .header {
+
+        &__mainMenu {
+            flex-direction: row-reverse;
+            padding-right: 15px;
+
+            & .searchContainer {
+                width: 60vw;
+            }
+            &__navigation {
+                display: none;
+                padding: 10px;
+            }
+            &__navigation.active {
+                z-index: 15;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                display: block;
+                top: 100%;
+                left: 0;
+                background-color: var(--main-color);
+            }
+            .hamburger {
+                display: block;
+                position: relative;
+                width: 30px;
+                height: 20px;
+                & > div {
+                    background: white;
+                    position: absolute;
+                    width: 100%;
+                    height: 3px;
+                    border-radius: 1px;
+                    transition: transform 0.2s, top 0.2s 0.2s, opacity 0.2s;
+                }
+                .topBar {
+                    top: 0px;
+                }
+                .middleBar {
+                    top: 10px;
+                }
+                .bottomBar {
+                    top: 20px;                    
+                }
+            }
+            .hamburger.active {
+                div {
+                    transition:  top 0.2s, transform 0.2s 0.2s, opacity 0.2s;
+                    top: 5px;
+
+                }
+                .topBar{
+                    transform: rotate(45deg);
+                }
+                .middleBar{
+                    opacity: 0;
+                }
+                .bottomBar {
+                    transform: rotate(135deg);
+                }
+            }
+
+        }
+        .container {
+            gap : 0px;
+        }
+    }
 }

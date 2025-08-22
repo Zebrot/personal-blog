@@ -21,4 +21,27 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    
+    &.recommendedBloglist {
+        flex-direction: row;
+        .blogCard {
+            height: 300px;
+            &__imgWrapper {
+                flex: 1;
+            }
+            h2 {
+                font-size: x-large;
+            }
+        }
+    }
+}
+
+@media(max-width: 991px) {
+.blogList{
+    &.recommendedBloglist {
+        a {
+            width: 100%;
+        }
+    }
+}
 }

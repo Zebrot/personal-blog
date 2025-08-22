@@ -3,13 +3,15 @@ import { tokenizeMarkdown } from "@/lib/parser";
 import { renderBlocks } from "@/lib/parser";
 import { Metadata } from "next";
 import '../blog.scss';
+import '../blogList.scss'
 import Image from "next/image";
 import { getAllBlogs } from "@/lib/blogs";
-import { blogPost } from "@/lib/types/blog";
+import { findClosestPosts } from "../../../../AI-controller";
 import Tags from "@/app/_components/tags";
+import BlogCard from "@/app/_components/blogCard";
 
 export async function generateStaticParams() {
-    const blogs = await getAllBlogs();
+    const blogs = getAllBlogs();
     return blogs.map((blog) => ({
         slug: blog.slug,
     }))
@@ -17,13 +19,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: {params : Promise<{slug: string}> }): Promise< Metadata >{
     const {slug} = await params;
-    const blog =  await getBlogBySlug(slug)
+    const blog =  getBlogBySlug(slug)
     if(!blog){
         return{
             title: 'Blog article not found',
             description: 'no such blog here'
     }}
+
     return {
+        metadataBase: new URL('https://terrancle.dev'),
         title: blog.metadata.title,
         description: blog.metadata.excerpt,
         openGraph: {
@@ -37,6 +41,7 @@ export async function generateMetadata({ params }: {params : Promise<{slug: stri
 export default async function SingleBlog({params,}:{params : Promise<{slug : string}> }){
     const {slug} = await params;
     const blog = getBlogBySlug(slug);
+    const recommended = findClosestPosts(blog, 2)
 
     if(!blog)
         return (<div>loading...</div>)
@@ -57,6 +62,9 @@ export default async function SingleBlog({params,}:{params : Promise<{slug : str
                 <div className="recommendedContent__title">
                     <h2>Recommended reads</h2>
                     <p>Explore more on the same subject</p>
+                    <div className="blogList recommendedBloglist">
+                        {recommended.map((post,index) => <BlogCard key={index} {...post}/>)}
+                    </div>
                 </div>
             </section>
         </div>

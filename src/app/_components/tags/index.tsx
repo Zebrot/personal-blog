@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import './tags.scss';
 export default function Tags({tags} : {tags:string[]}) {
     return (
