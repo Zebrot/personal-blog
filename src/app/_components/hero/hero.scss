@@ -33,6 +33,11 @@
 @media(max-width : 991px){
     .hero{
         margin-bottom: -4rem;
+
+        &__imgWrapper {
+            height: 40vh;
+            top: -100px;
+        }
         &__title{
             h1 {
                 position:relative;
