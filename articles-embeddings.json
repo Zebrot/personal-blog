@@ -1,7 +1,7 @@
 [
   {
     "articlePath": "FirstBlog",
-    "content": "-- **There is something naive about starting a blog in 2025, don't you think ?** --\r\n\r\nI mean, blogs have been culturally outdated for around a decade at this point, and with AI slop running around everywhere it feels like both writing and web development have been made obsolete as well. \r\n\r\nIsn't that joyous!",
+    "content": "-- **There is something naive about starting a blog in 2025, don't you think ?** --\r\n\r\nBlogs haven't been the shiny new things for around a decade, but they're still a way for developpers or niche hobbyists to share their thoughts, their tutorials... I myself have spent hours reading blog posts from developpers, looking for information or insight, so building my own blog was a natural way for me to give back.",
     "embeddings": [
       -0.029769500717520714,
       -0.03409311920404434,
